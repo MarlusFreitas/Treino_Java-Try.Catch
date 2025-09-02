@@ -47,12 +47,16 @@ public class Account {
     }
     
     public void withdraw(double amount) throws DomainException{
+        validartewithdraw(amount);
+        balance -= amount;
+    }
+    
+    private void validartewithdraw(double amount) throws DomainException{
         if(getBalance() < amount){
             throw new DomainException("Nao tem saldo");
         }
         if(getwithdrawLimit() < amount){
             throw new DomainException("Nao tem limite");
         }
-        balance -= amount;
-    }   
+    }
 }
